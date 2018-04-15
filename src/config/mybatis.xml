@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD SQL Map Config 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Student" type="com.pojo.Student"/>
+		<typeAlias alias="Teacher" type="com.pojo.Teacher"/>
+		<typeAlias alias="Problemc" type="com.pojo.Problemc"/>
+		<typeAlias alias="Problemf" type="com.pojo.Problemf"/>
+		<typeAlias alias="Problemm" type="com.pojo.Problemm"/>
+		<typeAlias alias="PaperProblem" type="com.pojo.PaperProblem"/>
+		<typeAlias alias="Type" type="com.pojo.Type"/>
+		<typeAlias alias="ExamPost" type="com.pojo.ExamPost"/>
+		<typeAlias alias="Result" type="com.pojo.Result"/>
+ 	</typeAliases>
+ 	
+</configuration>

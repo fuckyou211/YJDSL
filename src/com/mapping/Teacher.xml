@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.TeacherDAO">
+	
+	<insert id="addProblemc" parameterType="com.pojo.Problemc">
+	insert into problemc(ctype,cque,copt,cans) value (#{ctype},#{cque},#{copt},#{cans})
+	</insert>
+
+	<insert id="addProblemf" parameterType="com.pojo.Problemf">
+	insert into problemf(ftype,fque,fans) value (#{ftype},#{fque},#{fans})
+	</insert>
+	
+	<insert id="addProblemm" parameterType="com.pojo.Problemm">
+	insert into problemm(mtype,mque,mans) value (#{mtype},#{mque},#{mans})
+	</insert>
+	
+	<insert id="addPaperMessage"><!-- 填写试卷信息 -->
+	insert into papermessage(pman,pname,pflag) value (#{pman},#{pname},'no')
+	</insert>
+	
+	<!-- 选择题到试卷 数据库改数据可空 选择题类型为0 分值临时填写-->
+	<insert id="addPaperMessageC">
+	insert into paperproblem(qpname,qtype,qque,qcopt,qans,qscore) value 
+	<foreach collection="list" item="c" separator=";">
+	(#{c.qpname},0,#{c.qque},#{c.qcopt},#{c.qans},#{c.qscore})
+	</foreach>
+	</insert>
+
+
+	<!-- 填空题到试卷 数据库改数据可空 类型为1 分值临时填写-->
+	<insert id="addPaperMessageF">
+	insert into paperproblem(qpname,qtype,qque,qcopt,qans,qscore) value 
+	<foreach collection="list" item="f" separator=";">
+	(#{f.qpname},1,#{f.qque},' ',#{f.qans},#{f.qscore})
+	</foreach>
+	</insert>
+	
+	<!-- 主观题到试卷 数据库改数据可空 选择题类型为2 分值临时填写-->
+	<insert id="addPaperMessageM">
+	insert into paperproblem(qpname,qtype,qque,qcopt,qans,qscore) value 
+	<foreach collection="list" item="m" separator=";">
+	(#{m.qpname},2,#{m.qque},' ',#{m.qans},#{m.qscore})
+	</foreach>
+	</insert>
+	
+	<!-- 发布考试-展示所有试卷 -->
+	<select id="getAllPaperMessage" resultType="com.pojo.PaperMessage">
+	select * from papermessage
+	</select>
+	
+	<!-- 发布考试-增加考试发布信息 -->
+	<insert id="addExamPost" parameterType="com.pojo.exampost">
+	insert into exampost(epid,ename,eposter,epman,etime,edate) value(#{epid},#{ename},#{eposter},#{epman},#{etime},#{edate})
+	</insert>
+	
+	<!-- 试卷维护-展示所有试卷 -->
+	<select id="getAllPaper" resultType="com.pojo.PaperMessage">
+	select * from papermessage
+	</select>
+	
+	<!-- 试卷维护-搜索试卷 -->
+	<select id="findPaper" resultType="com.pojo.PaperMessage">
+	select * from papermessage where ${type} LIKE ${value}
+	</select>
+	
+	<!-- 试卷维护-删除试卷 -->
+	<delete id="deleteTeacher" parameterType="string">
+	delete from papermessage where pname=#{pname};
+	delete from paperproblem where qpname=#{pname};
+	</delete>
+	
+	<!-- 试题类型-展示所有类型 -->
+	<select id="getAllType" resultType="com.pojo.Type">
+	select * from type
+	</select>
+	
+	<!-- 试题类型-增加新类型 -->
+	<insert id="addType" parameterType="com.pojo.Type">
+	insert into type(ttype) value (#{ttype})
+	</insert>
+	
+	<!-- 试题类型-删除类型 -->
+	<delete id="deleteType" parameterType="string">
+	delete from type where ttype=#{ttype}
+	</delete>
+</mapper>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<!-- 首页 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <style>
+        .info-box {
+            height: 85px;
+            background-color: white;
+            background-color: #ecf0f5;
+        }
+        
+        .info-box .info-box-icon {
+            border-top-left-radius: 2px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 2px;
+            display: block;
+            float: left;
+            height: 85px;
+            width: 85px;
+            text-align: center;
+            font-size: 45px;
+            line-height: 85px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .info-box .info-box-content {
+            padding: 5px 10px;
+            margin-left: 85px;
+        }
+        
+        .info-box .info-box-content .info-box-text {
+            display: block;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+        }
+        
+        .info-box .info-box-content .info-box-number {
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .major {
+            font-weight: 10px;
+            color: #01AAED;
+        }
+        
+        .main {
+            margin-top: 25px;
+        }
+        
+        .main .layui-row {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+</br>
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <ul class="layui-timeline">
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title">置顶的说明文档</h3>
+                            <ul>
+                                <h2>
+                                                                                  欢迎！
+                                </h2>
+                                <br>
+                                <li>
+                                      	请根据左侧导航栏进行所需操作。
+                                </li>
+                                <li>您在系统功能的使用权限上将受到管理员的限制</li>
+                                <li>使用过程中如有疑问，请咨询管理员</li>
+                                
+                            </ul>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="./plugins/layui/layui.js"></script>
+    <script>
+        layui.use('jquery', function() {
+            var $ = layui.jquery;
+            $('#test').on('click', function() {
+                parent.message.show({
+                    skin: 'cyan'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
